@@ -1,6 +1,7 @@
 package com.amss.xmlrating.repo;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -13,6 +14,7 @@ import com.amss.xmlrating.beans.Accommodation;
 @Repository
 @Transactional
 public interface AccommodationRepo extends PagingAndSortingRepository<Accommodation, Long> {
-	List<Accommodation> findByExternalKeyIn(List<Long> externals, Sort sort);
-	List<Accommodation> findByExternalKeyIn(List<Long> externals);
+	Iterable<Accommodation> findByExternalKeyIn(List<Long> externals, Sort sort);
+	Iterable<Accommodation> findByExternalKeyIn(List<Long> externals);
+	Optional<Accommodation> findByExternalKey(Long externalKey);
 }

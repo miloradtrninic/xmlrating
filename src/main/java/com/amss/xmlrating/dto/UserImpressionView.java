@@ -9,8 +9,9 @@ import lombok.Setter;
 @NoArgsConstructor @Setter @Getter
 public class UserImpressionView {
 	private Long id;
-	private Long accommodationId;
+	private Long accommodationExternalKey;
 	private Integer rating;
 	private String comment;
 	private String registeredUserUsername;
+	private Double averageRating;
 }
