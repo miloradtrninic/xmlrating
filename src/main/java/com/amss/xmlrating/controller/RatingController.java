@@ -91,8 +91,9 @@ public class RatingController {
 			acc.setRating(0.0);
 			acc.setUserImpressions(new HashSet<>());
 			accommodationRepo.save(acc);
+		} else {
+			acc = accommodation.get();
 		}
-		acc = accommodation.get();
 		UserImpression userImpression = new UserImpression();
 		userImpression.setAccommodation(accommodation.get());
 		userImpression.setComment(newEnt.getComment());
