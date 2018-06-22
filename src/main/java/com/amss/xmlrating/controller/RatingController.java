@@ -95,7 +95,7 @@ public class RatingController {
 			acc = accommodation.get();
 		}
 		UserImpression userImpression = new UserImpression();
-		userImpression.setAccommodation(accommodation.get());
+		userImpression.setAccommodation(acc);
 		userImpression.setComment(newEnt.getComment());
 		userImpression.setRating(newEnt.getRating());
 		userImpression.setRegisteredUserUsername(newEnt.getRegisteredUserUsername());
@@ -106,9 +106,9 @@ public class RatingController {
 		}
 		double rating = 0;
     	if(ratingSum > 0) {
-    		rating = ratingSum * 1.0 / accommodation.get().getUserImpressions().size();
+    		rating = ratingSum * 1.0 / acc.getUserImpressions().size();
     		acc.setRating(rating);
-    		accommodationRepo.save(accommodation.get());
+    		accommodationRepo.save(acc);
     	}
     	UserImpressionView response = mapper.map(userImpression, UserImpressionView.class);
     	response.setAverageRating(rating);
