@@ -100,7 +100,10 @@ public class RatingController {
 		userImpression.setRating(newEnt.getRating());
 		userImpression.setRegisteredUserUsername(newEnt.getRegisteredUserUsername());
 		userImpression = impressionRepo.save(userImpression);
-		Integer ratingSum = acc.getUserImpressions().stream().mapToInt(i -> i.getRating()).sum();
+		Integer ratingSum = 0;
+		if(acc.getUserImpressions().size() > 0) {
+			ratingSum = acc.getUserImpressions().stream().mapToInt(i -> i.getRating()).sum();
+		}
 		double rating = 0;
     	if(ratingSum > 0) {
     		rating = ratingSum * 1.0 / accommodation.get().getUserImpressions().size();
