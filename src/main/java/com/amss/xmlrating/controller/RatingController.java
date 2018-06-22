@@ -71,7 +71,7 @@ public class RatingController {
 	}
 	
 	@PostMapping(value="/accommodation/new", consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<?> accommodationNew(AccommodationCreation newEnt) {
+	public ResponseEntity<?> accommodationNew(@RequestBody AccommodationCreation newEnt) {
 		Accommodation accommodation = new Accommodation();
 		accommodation.setId(newEnt.getId());
 		accommodation.setRating(newEnt.getRating());
@@ -82,7 +82,7 @@ public class RatingController {
 	
 	
 	@PostMapping(value="/impression/new", consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<?> impressionNew(UserImpressionCreation newEnt) {
+	public ResponseEntity<?> impressionNew(@RequestBody UserImpressionCreation newEnt) {
 		Accommodation acc = null;
 		Optional<Accommodation> accommodation = accommodationRepo.findByExternalKey(newEnt.getAccommodationId());
 		if(!accommodation.isPresent()) {
